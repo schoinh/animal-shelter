@@ -3,6 +3,7 @@ using AnimalShelter.Models;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace AnimalShelter.Controllers
 {
     public class AnimalsController : Controller
@@ -16,6 +17,7 @@ namespace AnimalShelter.Controllers
 
         public ActionResult Index()
         {
+            // Using LINQ to order our list of animals by ascending alphaetical order of name (model.Name)
             List<Animal> model = _db.Animals.ToList();
             var query =
                 from animal in model
@@ -23,6 +25,19 @@ namespace AnimalShelter.Controllers
                 select animal;
             return View(query.ToList());
         }
+
+        // // IndexSort()  allows for user input to further refine results via their chosen species.
+        // public ActionResult IndexSort(string species)
+        // {
+
+        //     List<Animal> model = _db.Animals.ToList();
+        //     var query =
+        //         from animal in model
+        //         where animal.Species == species
+        //         orderby animal.Name ascending
+        //         select animal;
+        //     return View(query.ToList());
+        // }
 
         public ActionResult Create()
         {
