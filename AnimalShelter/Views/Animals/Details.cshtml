@@ -1,10 +1,24 @@
 @{
   Layout = "_Layout";
 }
-
 @model AnimalShelter.Models.Animal
+<div class="card">
+  <div class="card-header">
+    <h2>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h2>
+  </div>
 
-<h2>Animal Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+  <div class="card-body">
+    <p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
+    <p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
+    <p>@Html.DisplayNameFor(model => model.Species): @Html.DisplayFor(model => model.Species)</p>
+    <p>@Html.DisplayNameFor(model => model.Breed): @Html.DisplayFor(model => model.Breed)</p>
+    <p>@Html.DisplayNameFor(model => model.Gender): @Html.DisplayFor(model => model.Gender)</p>
+    <p>@Html.DisplayNameFor(model => model.Date): @Html.DisplayFor(model => model.Date)</p>
+  </div>
+  <div class="card-footer">
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+  </div>
+
+
+</div>
+
