@@ -5,10 +5,11 @@
 @using AnimalShelter.Models;
 @model List<AnimalShelter.Models.Animal>;
 
+<div class="card">
 <h1>Animals</h1>
-
-<p>@Html.ActionLink("Sort by Date", "IndexByDate")</p>
-
+<div class="card-header">
+  <p>Sort By:    @Html.ActionLink("Name ", "Index") | @Html.ActionLink("Date ", "IndexByDate") |@Html.ActionLink("Breed ", "IndexByBreed") | @Html.ActionLink("Gender ", "IndexByGender") |@Html.ActionLink("Species ", "IndexBySpecies")</p>
+</div>
 <!-- <label for="Species">Show by species:  </label>
 <input type = "text" list = "Species" name="Species"> 
   <datalist id = "Species">
@@ -30,9 +31,11 @@
 
   @foreach (Animal animal in Model)
 {
-  <p>@Html.ActionLink($"{animal.Name}", "Details", new { id = animal.AnimalId})</p>
+  <p>@Html.ActionLink($"{animal.Name} - {animal.Species}", "Details", new { id = animal.AnimalId})</p>
 }
 
-<hr>
+<div class="card-footer">
 <p>@Html.ActionLink("Add new animal", "Create")</p>
 <p>@Html.ActionLink("Back Home", "Index", "Home")</p>
+</div>
+</div>
