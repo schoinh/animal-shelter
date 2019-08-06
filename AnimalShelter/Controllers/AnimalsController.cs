@@ -19,11 +19,20 @@ namespace AnimalShelter.Controllers
         {
             // Using LINQ to order our list of animals by ascending alphaetical order of name (model.Name)
             List<Animal> model = _db.Animals.ToList();
-            var query =
-                from animal in model
-                orderby animal.Name ascending
-                select animal;
+            IEnumerable<Animal> query = model.OrderBy(animal => animal.Name);
             return View(query.ToList());
+        }
+
+        public ActionResult IndexByDate()
+        {
+            // Using LINQ to order our list of animals by oldest intake date to most recent
+            List<Animal> model = _db.Animals.ToList();
+            IEnumerable<Animal> query =
+                from animal in model
+                orderby animal.Date ascending
+                select animal;
+            // IEnumerable<Animal> query = model.OrderBy(animal => animal.Date);
+            return View("Index", query.ToList());
         }
 
         // // IndexSort()  allows for user input to further refine results via their chosen species.
